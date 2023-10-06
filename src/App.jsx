@@ -1,16 +1,18 @@
 import React, { memo } from 'react'
 
-import Home from './views/home'
-import Detail from '@/views/detail'
-import Entire from './views/entire'
+
+import { useRoutes } from 'react-router-dom'
+import routes from './router'
 
 
 const App = memo(() => {
   return (
-    <div>App
-      <Home></Home>
-      <Detail/>
-      <Entire/>
+    <div className='app'>
+      <div className="header">header</div>
+      <div className="apge">
+        {useRoutes(routes)}
+      </div>
+      <div className="footer">footer</div>
     </div>
   )
 })
