@@ -1,10 +1,19 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { RightWrapper } from './style'
 import IconGlobal from '@/assets/svg/icon_global'
 import IconMenu from '@/assets/svg/icon_menu'
 import IconAvatar from '@/assets/svg/icon_avatar'
 
 const HeaderRight = memo(() => {
+  // 定义组件内部的状态
+
+  
+  // 副作用代码
+
+
+  // 事件处理函数
+
+
   return (
     <RightWrapper>
       <div className="btns">
@@ -15,7 +24,7 @@ const HeaderRight = memo(() => {
         </div>
       </div>
 
-      <div className="profile" >
+      <div className="profile">
         <IconMenu/>
         <IconAvatar/>
       </div>
