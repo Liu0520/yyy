@@ -3,9 +3,15 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
 export const fetchHomeDataAction = createAsyncThunk(
   "fetchdata",
-  async (payload) => {
-    const res = await getHomeGoodPriceData()
+  async (extraInfo, { dispatch, getState }) => {
+    // 方法一：直接调用dispatch
+    // const res = await getHomeGoodPriceData()
     // console.log(res)
+    // dispatch(changeGoodPriceInfoAction(res))
+    // return res
+
+    // 方法二：使用extraReducers
+    const res = await getHomeGoodPriceData()
     return res
   }
 )
@@ -17,15 +23,16 @@ const homeSlice = createSlice({
   },
   reducers: {
     changeGoodPriceInfoAction(state, { payload }) {
+      console.log('change')
+      console.log(state, payload)
       state.goodPriceInfo = payload
     },
   },
-  extraReducers: {
-    [fetchHomeDataAction.fulfilled](state, { payload }) {
-      // console.log(state.goodPriceInfo)
+  extraReducers: (builder) => {
+    builder.addCase(fetchHomeDataAction.fulfilled, (state, { payload }) => {
       state.goodPriceInfo = payload
-    },
-  },
+    })
+  }
 })
 
 export const { changeGoodPriceInfoAction } = homeSlice.actions

@@ -16,7 +16,7 @@ export const FooterWrapper = styled.div`
 
     .item {
       flex: 1;
-
+      text-align: center;
       .name {
         margin-bottom: 16px;
         font-weight: 700;
