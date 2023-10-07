@@ -3,6 +3,7 @@ import HomeBanner from "./c-cpns/home-banner"
 import { shallowEqual, useDispatch, useSelector } from "react-redux"
 import { fetchHomeDataAction } from "@/store/modules/home"
 import { HomeWrapper } from "./style"
+import SectionHeader from "@/components/section-header"
 
 const Home = memo(() => {
   // 从redux中获取到数据
@@ -27,12 +28,7 @@ const Home = memo(() => {
       <HomeBanner />
       <div className="content">
         <div className="good-price">
-          <div>{goodPriceInfo.title}</div>
-          <ul>
-            {goodPriceInfo?.list?.map((item) => {
-              return <li key={item.id}>{item.name}</li>
-            })}
-          </ul>
+          <SectionHeader title={goodPriceInfo.title}/>
         </div>
       </div>
     </HomeWrapper>
