@@ -1,23 +1,32 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { getHomeGoodPriceData } from "@/services/modules/home"
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+
+export const fetchHomeDataAction = createAsyncThunk(
+  "fetchdata",
+  async (payload) => {
+    const res = await getHomeGoodPriceData()
+    // console.log(res)
+    return res
+  }
+)
 
 const homeSlice = createSlice({
   name: "home",
   initialState: {
-    productList: [],
-    value: 0
+    goodPriceInfo: {},
   },
   reducers: {
-    increment: state => {
-      state.value +=1
+    changeGoodPriceInfoAction(state, { payload }) {
+      state.goodPriceInfo = payload
     },
-    decrement: state => {
-      state.value -=1
+  },
+  extraReducers: {
+    [fetchHomeDataAction.fulfilled](state, { payload }) {
+      // console.log(state.goodPriceInfo)
+      state.goodPriceInfo = payload
     },
-    incrementBycount: (state, action) => {
-      state.value += action.payload
-    }
   },
 })
 
-export const {increment, decrement, incrementBycount} = homeSlice.actions
+export const { changeGoodPriceInfoAction } = homeSlice.actions
 export default homeSlice.reducer

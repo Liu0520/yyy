@@ -4,7 +4,8 @@ import homeReducer from './modules/home'
 
 const store = configureStore({
   reducer: {
-    home: homeReducer
+    home: homeReducer,
+    
   }
 })
 

@@ -10,7 +10,7 @@ export const LeftWrapper = styled.div`
     cursor: pointer;
 
     img {
-      height: 30px;
+      height: 32px;
     }
   }
 `
