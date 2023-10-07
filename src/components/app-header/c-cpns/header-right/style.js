@@ -42,6 +42,8 @@ export const RightWrapper = styled.div`
     cursor: pointer;
 
 
+    ${props => props.theme.mixin.boxShadow}
+
 
   }
 `
